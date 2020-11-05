@@ -24,3 +24,4 @@ $i= 0;
     }
     echo $i;
     var_dump ($_GET);
+?>
