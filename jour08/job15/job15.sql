@@ -1,1 +1,1 @@
-SELECT `nom`,`id_etage` FROM `salles` WHERE 1
+SELECT salles.nom, etage.nom FROM salles INNER JOIN etage ON salles.id_etage = etage.id
