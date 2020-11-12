@@ -1,7 +1,7 @@
 <?php
 $sql = mysqli_connect('localhost', 'root' , '', 'jour08');
 $request = mysqli_query($sql, "SELECT `prenom`,`nom`,`naissance` FROM `etudiants` WHERE `sexe`= 'Femme'");
-$resultat = mysqli_fetch_all($request);
+$resultat = mysqli_num_rows($request);
 //var_dump($resultat); 
 ?>
 
@@ -36,11 +36,13 @@ $resultat = mysqli_fetch_all($request);
 </tr>
 </thead>
 <tbody>
-<tr>
-<td><?php echo $resultat[0][0]?></td>
-<td><?php echo $resultat[0][1]?></td>
-<td><?php echo $resultat[0][2]?></td>
-</tr>
+<?php   
+while ($row = mysqli_fetch_array($request)) {
+        echo "<tr><td>$row[prenom]</td>";
+        echo "<td>$row[nom]</td>";
+        echo "<td>$row[naissance]</td></tr>";
+    }
+?>
 </tbody>
 </table>
 </body>
