@@ -1,7 +1,7 @@
 <?php
 $sql = mysqli_connect('localhost', 'root' , '', 'jour08');
 $request = mysqli_query($sql, "SELECT * FROM `etudiants` WHERE `prenom` LIKE '%T%'");
-$resultat = mysqli_fetch_all($request);
+$resultat = mysqli_num_rows($request);
 //var_dump($resultat); 
 ?>
 
@@ -37,22 +37,16 @@ $resultat = mysqli_fetch_all($request);
 <td>sexe</td>
 <td>e-mail</td>
 <tbody>
-<tr>
-<td><?php echo $resultat[0][0]?></td>
-<td><?php echo $resultat[0][1]?></td>
-<td><?php echo $resultat[0][2]?></td>
-<td><?php echo $resultat[0][3]?></td>
-<td><?php echo $resultat[0][4]?></td>
-<td><?php echo $resultat[0][5]?></td>
-</tr>
-<tr>
-<td><?php echo $resultat[1][0]?></td>
-<td><?php echo $resultat[1][1]?></td>
-<td><?php echo $resultat[1][2]?></td>
-<td><?php echo $resultat[1][3]?></td>
-<td><?php echo $resultat[1][4]?></td>
-<td><?php echo $resultat[1][5]?></td>
-</tr>
+<?php   
+        while ($row = mysqli_fetch_array($request)) {
+            echo "<tr><td>$row[id]</td>";
+            echo "<td>$row[prenom]</td>";
+            echo "<td>$row[nom]</td>";
+            echo "<td>$row[sexe]</td>";
+            echo "<td>$row[naissance]</td>";
+            echo "<td>$row[email]</td></tr>";
+        }
+?>
 </tbody>
 </table>
 </body>
