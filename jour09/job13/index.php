@@ -2,7 +2,7 @@
 $sql = mysqli_connect('localhost', 'root' , '', 'jour08');
 $request = mysqli_query($sql, "SELECT salles.nom, etage.nom FROM salles INNER JOIN etage ON salles.id_etage = etage.id");
 $resultat = mysqli_num_rows($request);
-var_dump($resultat); 
+//var_dump($resultat); 
 ?>
 
 <!doctype html>
